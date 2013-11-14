@@ -8,3 +8,7 @@
 *.plist
 
 *.4d61
+
+dentaku.xcodeproj/xcuserdata/2011531064.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
+dentaku/operating/operating/operating-Prefix.pch

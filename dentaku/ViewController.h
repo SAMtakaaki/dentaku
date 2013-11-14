@@ -10,4 +10,21 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *gamen;
+@property (weak, nonatomic) IBOutlet UILabel *enzan;
+
+- (IBAction)number:(id)sender;
+
+- (IBAction)botandot:(id)sender;
+
+- (IBAction)Equal:(id)sender;
+- (IBAction)Clear:(id)sender;
+
+- (IBAction)Plus:(id)sender;
+- (IBAction)Minus:(id)sender;
+- (IBAction)Multi:(id)sender;
+- (IBAction)Devide:(id)sender;
+
+- (IBAction)rute:(id)sender;
+
 @end
