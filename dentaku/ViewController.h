@@ -15,15 +15,10 @@
 
 - (IBAction)number:(id)sender;
 
-- (IBAction)botandot:(id)sender;
-
 - (IBAction)Equal:(id)sender;
 - (IBAction)Clear:(id)sender;
 
-- (IBAction)Plus:(id)sender;
-- (IBAction)Minus:(id)sender;
-- (IBAction)Multi:(id)sender;
-- (IBAction)Devide:(id)sender;
+- (IBAction)operate:(id)sender;
 
 - (IBAction)rute:(id)sender;
 

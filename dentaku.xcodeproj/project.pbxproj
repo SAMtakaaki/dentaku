@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB636F9818348D4400C215EC /* operating.h in Resources */ = {isa = PBXBuildFile; fileRef = EB636F9618348D4400C215EC /* operating.h */; };
-		EB636F9918348D4400C215EC /* operating.m in Resources */ = {isa = PBXBuildFile; fileRef = EB636F9718348D4400C215EC /* operating.m */; };
 		EBABF76B180FBF7300923B72 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBABF76A180FBF7300923B72 /* UIKit.framework */; };
 		EBABF76D180FBF7300923B72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBABF76C180FBF7300923B72 /* Foundation.framework */; };
 		EBABF76F180FBF7300923B72 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBABF76E180FBF7300923B72 /* CoreGraphics.framework */; };
@@ -38,8 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB636F9618348D4400C215EC /* operating.h */ = {isa = PBXFileReference; lastKnownFileType = file; name = operating.h; path = operating/operating/operating.h; sourceTree = "<group>"; };
-		EB636F9718348D4400C215EC /* operating.m */ = {isa = PBXFileReference; lastKnownFileType = file; name = operating.m; path = operating/operating/operating.m; sourceTree = "<group>"; };
 		EBABF767180FBF7300923B72 /* dentaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dentaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBABF76A180FBF7300923B72 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EBABF76C180FBF7300923B72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,8 +122,6 @@
 				EBABF782180FBF7300923B72 /* MainStoryboard.storyboard */,
 				EBABF785180FBF7300923B72 /* ViewController.h */,
 				EBABF786180FBF7400923B72 /* ViewController.m */,
-				EB636F9618348D4400C215EC /* operating.h */,
-				EB636F9718348D4400C215EC /* operating.m */,
 				EBABF771180FBF7300923B72 /* Supporting Files */,
 			);
 			path = dentaku;
@@ -250,8 +244,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBABF799180FBF7400923B72 /* InfoPlist.strings in Resources */,
-				EB636F9818348D4400C215EC /* operating.h in Resources */,
-				EB636F9918348D4400C215EC /* operating.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

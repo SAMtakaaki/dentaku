@@ -30,55 +30,132 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-int before=0;
+
+int anser=0,left=0,right=0,before=0,x=0;
+
 - (IBAction)number:(id)sender {
+    
+    if (before<10000000) {
     
     UIButton *number=sender;
     matrix=number.tag;
-    matrix = before*10 + matrix;
-    NSString *str = [NSString stringWithFormat:@"%8d",matrix];
+    before = before*10 + matrix;
+    NSString *str = [NSString stringWithFormat:@"%d",before];
     self.gamen.text = str;
 
-    before=matrix;
+    }
     
+    else{
+        before=before;
+    }
+    anser=before;
 }
 
-- (IBAction)botandot:(id)sender {
-    [[self gamen] setText:@"."];
-}
-
-
-- (IBAction)Equal:(id)sender {
-    [[self enzan] setText:@"="];
-}
 
 - (IBAction)Clear:(id)sender {
     [[self gamen] setText:@"0"];
     [[self enzan] setText:@""];
+    anser=0;
+    matrix=0;
+    right=0;
+    left=0;
     before=0;
 }
 
 
 - (IBAction)rute:(id)sender {
     [[self enzan] setText:@"√"];
+    anser=sqrt(anser);
+    NSString *Anser = [NSString stringWithFormat:@"%d",anser];
+    self.gamen.text = Anser;
+}
+
+- (IBAction)operate:(id)sender {    
+    if (right==0) {
+        right=anser;
+        matrix=0;
+        before=0;
+        self.gamen.text = [NSString stringWithFormat:@"%d",right];
+        
+    }
+    else if(left==0){
+        left=right;
+        right=anser;
+        matrix=0;
+        before=0;
+        self.gamen.text = [NSString stringWithFormat:@"%d",left];
+    }
+    
+    else{
+        right=right+anser;
+        matrix=0;
+        before=0;
+        self.gamen.text = [NSString stringWithFormat:@"%d",right];
+    }
+    
+    UIButton *operate=sender;
+    switch (operate.tag) {
+        case 10:
+            [[self enzan] setText:@"+"];
+            
+            anser=left+right;
+            break;
+            
+        case 11:
+            [[self enzan]setText:@"-"];
+            
+            anser=left-right;
+            break;
+            
+        case 12:
+            [[self enzan]setText:@"*"];
+            anser=left*right;
+            break;
+        case 13:
+            [[self enzan]setText:@"/"];
+            anser=left/right;
+            break;
+    }
+    x=operate.tag;
 }
 
 
-- (IBAction)Plus:(id)sender {
-    [[self enzan] setText:@"+"];
+- (IBAction)Equal:(id)sender {
+    if (right==0) {
+        right=anser;
+        matrix=0;
+        before=0;
+        self.gamen.text = [NSString stringWithFormat:@"%d",right];
+        
+    }
+    else{
+        left=right;
+        right=anser;
+        matrix=0;
+        before=0;
+        self.gamen.text = [NSString stringWithFormat:@"%d",left];
+    }
+    switch (x) {
+        case 10:            
+            anser=left+right;
+            break;
+            
+        case 11:
+            anser=left-right;
+            break;
+            
+        case 12:
+            anser=left*right;
+            break;
+        case 13:
+            anser=left/right;
+            break;
+    }
+    
+    [[self enzan] setText:@"="];
+    
+    NSString *Anser = [NSString stringWithFormat:@"%d",anser];
+    self.gamen.text = Anser;
 }
-
-- (IBAction)Minus:(id)sender {
-    [[self enzan] setText:@"-"];
-}
-
-- (IBAction)Multi:(id)sender {
-    [[self enzan] setText:@"*"];
-}
-
-- (IBAction)Devide:(id)sender {
-    [[self enzan] setText:@"/"];
-}
-
 
 @end
