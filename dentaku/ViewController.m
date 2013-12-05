@@ -7,9 +7,14 @@
 //
 
 #import "ViewController.h"
+#define PLUS 10
+#define MINUS 11
+#define MULTI 12
+#define DIVIDE 13
+#define NOTHING 0
 
 @interface ViewController (){
-    int matrix;
+    int before;
 }
 
 @end
@@ -20,8 +25,8 @@
 {
     [super viewDidLoad];
     
-    matrix = 0;
-    self.gamen.text = [NSString stringWithFormat:@"%d",matrix];
+    before = 0;
+    self.gamen.text = [NSString stringWithFormat:@"%d",before];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -31,131 +36,138 @@
     // Dispose of any resources that can be recreated.
 }
 
-int anser=0,left=0,right=0,before=0,x=0;
+int answer=0,left=0,right=0,opnum=0;
 
 - (IBAction)number:(id)sender {
     
     if (before<10000000) {
-    
-    UIButton *number=sender;
-    matrix=number.tag;
-    before = before*10 + matrix;
-    NSString *str = [NSString stringWithFormat:@"%d",before];
-    self.gamen.text = str;
+        
+        UIButton *number=sender;
+        
+        before = before*10 + number.tag;
+        NSString *str = [NSString stringWithFormat:@"%d",before];
+        self.gamen.text = str;
+        
+    }
 
-    }
-    
-    else{
-        before=before;
-    }
-    anser=before;
+answer=before;
 }
 
 
 - (IBAction)Clear:(id)sender {
     [[self gamen] setText:@"0"];
     [[self enzan] setText:@""];
-    anser=0;
-    matrix=0;
+    answer=0;
     right=0;
     left=0;
     before=0;
+    opnum=0;
 }
 
 
 - (IBAction)rute:(id)sender {
     [[self enzan] setText:@"√"];
-    anser=sqrt(anser);
-    NSString *Anser = [NSString stringWithFormat:@"%d",anser];
-    self.gamen.text = Anser;
+    answer=sqrt(before);
+    NSString *ans = [NSString stringWithFormat:@"%d",answer];
+    self.gamen.text = ans;
 }
 
-- (IBAction)operate:(id)sender {    
-    if (right==0) {
-        right=anser;
-        matrix=0;
-        before=0;
-        self.gamen.text = [NSString stringWithFormat:@"%d",right];
-        
-    }
-    else if(left==0){
-        left=right;
-        right=anser;
-        matrix=0;
-        before=0;
-        self.gamen.text = [NSString stringWithFormat:@"%d",left];
-    }
-    
-    else{
-        right=right+anser;
-        matrix=0;
-        before=0;
-        self.gamen.text = [NSString stringWithFormat:@"%d",right];
-    }
-    
+- (IBAction)operate:(id)sender {
     UIButton *operate=sender;
+    if(right==0) {
+        right=before;
+        self.gamen.text = [NSString stringWithFormat:@"%d",right];
+    }
+    else{
+        left=before;
+    }
+    before=0;
+    if(opnum!=NOTHING){
+        switch (opnum) {
+            case PLUS:
+                right=left+right;
+                left=0;
+                break;
+                
+            case MINUS:
+                right=right-left;
+                left=0;
+                break;
+                
+            case MULTI:
+                right=left*right;
+                left=0;
+                break;
+            case DIVIDE:
+                right=right/left;
+                left=0;
+                break;
+        }
+        opnum=0;
+    }
+    
     switch (operate.tag) {
-        case 10:
+        case PLUS:
             [[self enzan] setText:@"+"];
-            
-            anser=left+right;
+            answer=left+right;
             break;
             
-        case 11:
+        case MINUS:
             [[self enzan]setText:@"-"];
-            
-            anser=left-right;
+            answer=right-left;
             break;
             
-        case 12:
+        case MULTI:
             [[self enzan]setText:@"*"];
-            anser=left*right;
+            answer=left*right;
             break;
-        case 13:
+        case DIVIDE:
             [[self enzan]setText:@"/"];
-            anser=left/right;
+            answer=right;
             break;
     }
-    x=operate.tag;
+    if(answer!=0){
+        NSString *str = [NSString stringWithFormat:@"%d",answer];
+        self.gamen.text = str;
+    }
+    opnum=operate.tag;
 }
 
 
 - (IBAction)Equal:(id)sender {
-    if (right==0) {
-        right=anser;
-        matrix=0;
-        before=0;
-        self.gamen.text = [NSString stringWithFormat:@"%d",right];
-        
+    if(left==0){
+        left=before;
     }
-    else{
-        left=right;
-        right=anser;
-        matrix=0;
-        before=0;
-        self.gamen.text = [NSString stringWithFormat:@"%d",left];
+    if(left==0){
+        left=1;
     }
-    switch (x) {
-        case 10:            
-            anser=left+right;
+    switch (opnum) {
+        case PLUS:
+            [[self enzan] setText:@"+"];
+            answer=left+right;
             break;
             
-        case 11:
-            anser=left-right;
+        case MINUS:
+            [[self enzan]setText:@"-"];
+            answer=right-left;
             break;
             
-        case 12:
-            anser=left*right;
+        case MULTI:
+            [[self enzan]setText:@"*"];
+            answer=left*right;
             break;
-        case 13:
-            anser=left/right;
+        case DIVIDE:
+            [[self enzan]setText:@"/"];
+            answer=right/left;
             break;
     }
+    opnum=0;
+    left=answer;
     
     [[self enzan] setText:@"="];
     
-    NSString *Anser = [NSString stringWithFormat:@"%d",anser];
-    self.gamen.text = Anser;
+    NSString *ans = [NSString stringWithFormat:@"%d",answer];
+    self.gamen.text = ans;
 }
 
 @end
