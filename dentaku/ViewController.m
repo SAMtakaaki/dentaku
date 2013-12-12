@@ -11,10 +11,15 @@
 #define MINUS 11
 #define MULTI 12
 #define DIVIDE 13
+#define ROOT 50
+#define EQUAL 100
 #define NOTHING 0
 
 @interface ViewController (){
-    int before;
+    int answer;
+    int right;
+    int opnum;
+    int innum;
 }
 
 @end
@@ -24,33 +29,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    before = 0;
-    self.gamen.text = [NSString stringWithFormat:@"%d",before];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self Clear:nil];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-int answer=0,left=0,right=0,opnum=0;
 
 - (IBAction)number:(id)sender {
-    
-    if (before<10000000) {
-        
-        UIButton *number=sender;
-        
-        before = before*10 + number.tag;
-        NSString *str = [NSString stringWithFormat:@"%d",before];
-        self.gamen.text = str;
-        
-    }
-
-answer=before;
+    UIButton *number=sender;
+    innum=number.tag;
+    [self input];
+    NSString *str = [NSString stringWithFormat:@"%d",right];
+    self.gamen.text = str;
 }
 
 
@@ -59,115 +46,81 @@ answer=before;
     [[self enzan] setText:@""];
     answer=0;
     right=0;
-    left=0;
-    before=0;
-    opnum=0;
-}
-
-
-- (IBAction)rute:(id)sender {
-    [[self enzan] setText:@"√"];
-    answer=sqrt(before);
-    NSString *ans = [NSString stringWithFormat:@"%d",answer];
-    self.gamen.text = ans;
+    opnum=NOTHING;
 }
 
 - (IBAction)operate:(id)sender {
     UIButton *operate=sender;
-    if(right==0) {
-        right=before;
-        self.gamen.text = [NSString stringWithFormat:@"%d",right];
-    }
-    else{
-        left=before;
-    }
-    before=0;
-    if(opnum!=NOTHING){
-        switch (opnum) {
-            case PLUS:
-                right=left+right;
-                left=0;
-                break;
-                
-            case MINUS:
-                right=right-left;
-                left=0;
-                break;
-                
-            case MULTI:
-                right=left*right;
-                left=0;
-                break;
-            case DIVIDE:
-                right=right/left;
-                left=0;
-                break;
-        }
-        opnum=0;
+    if(answer==0) {
+        answer=right;
+        right=0;
     }
     
-    switch (operate.tag) {
-        case PLUS:
-            [[self enzan] setText:@"+"];
-            answer=left+right;
-            break;
-            
-        case MINUS:
-            [[self enzan]setText:@"-"];
-            answer=right-left;
-            break;
-            
-        case MULTI:
-            [[self enzan]setText:@"*"];
-            answer=left*right;
-            break;
-        case DIVIDE:
-            [[self enzan]setText:@"/"];
-            answer=right;
-            break;
+    if(opnum!=NOTHING){
+        [self operating1 :(answer) :(right)];
+        opnum=NOTHING;
+        right=0;
     }
-    if(answer!=0){
-        NSString *str = [NSString stringWithFormat:@"%d",answer];
-        self.gamen.text = str;
-    }
+    
     opnum=operate.tag;
+    [self operating2];
+    NSString *ans = [NSString stringWithFormat:@"%d",answer];
+    self.gamen.text = ans;
 }
 
+- (int)input{
+    if (right<10000000) {
+        right = right*10 + innum;
+    }
+    return right;
+}
 
-- (IBAction)Equal:(id)sender {
-    if(left==0){
-        left=before;
-    }
-    if(left==0){
-        left=1;
-    }
+- (int)operating1:(int)ans :(int)rig{
     switch (opnum) {
         case PLUS:
             [[self enzan] setText:@"+"];
-            answer=left+right;
+            answer=ans+rig;
             break;
-            
         case MINUS:
             [[self enzan]setText:@"-"];
-            answer=right-left;
+            answer=ans-rig;
             break;
-            
         case MULTI:
             [[self enzan]setText:@"*"];
-            answer=left*right;
+            answer=ans*rig;
             break;
         case DIVIDE:
             [[self enzan]setText:@"/"];
-            answer=right/left;
+            answer=ans/rig;
+            break;
+        case ROOT:
+            [[self enzan]setText:@"√"];
+            answer=sqrt(answer);
             break;
     }
-    opnum=0;
-    left=answer;
-    
-    [[self enzan] setText:@"="];
-    
-    NSString *ans = [NSString stringWithFormat:@"%d",answer];
-    self.gamen.text = ans;
+    return answer;
+}
+
+- (int)operating2{
+    switch (opnum) {
+        case PLUS:
+            [[self enzan] setText:@"+"];
+            break;
+        case MINUS:
+            [[self enzan]setText:@"-"];
+            break;
+        case MULTI:
+            [[self enzan]setText:@"*"];
+            break;
+        case DIVIDE:
+            [[self enzan]setText:@"/"];
+            break;
+        case ROOT:
+            [[self enzan]setText:@"√"];
+            answer=sqrt(answer);
+            break;
+    }
+    return answer;
 }
 
 @end

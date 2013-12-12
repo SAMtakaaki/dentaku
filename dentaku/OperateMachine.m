@@ -7,3 +7,17 @@
 //
 
 
+#import "ViewController.h"
+
+#import "OperateMachine.h"
+
+@implementation operatemachine
+
+- (void)number:(id)sender controller:(ViewController *)controller;{
+    
+}
+- (void)operate:(id)sender controller:(ViewController *)controller;{
+    
+}
+
+@end

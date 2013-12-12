@@ -14,12 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *enzan;
 
 - (IBAction)number:(id)sender;
-
-- (IBAction)Equal:(id)sender;
 - (IBAction)Clear:(id)sender;
-
 - (IBAction)operate:(id)sender;
-
-- (IBAction)rute:(id)sender;
 
 @end
