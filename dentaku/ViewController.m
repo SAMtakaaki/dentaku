@@ -56,13 +56,47 @@
         right=0;
     }
     
-    if(opnum!=NOTHING){
+    if(opnum!=NOTHING && right!=0){
+        switch (opnum) {
+            case PLUS:
+                [[self enzan] setText:@"+"];
+                break;
+            case MINUS:
+                [[self enzan]setText:@"-"];
+                break;
+            case MULTI:
+                [[self enzan]setText:@"*"];
+                break;
+            case DIVIDE:
+                [[self enzan]setText:@"/"];
+                break;
+            case ROOT:
+                [[self enzan]setText:@"√"];
+                break;
+        }
         [self operating1 :(answer) :(right)];
         opnum=NOTHING;
         right=0;
     }
     
     opnum=operate.tag;
+    switch (opnum) {
+        case PLUS:
+            [[self enzan] setText:@"+"];
+            break;
+        case MINUS:
+            [[self enzan]setText:@"-"];
+            break;
+        case MULTI:
+            [[self enzan]setText:@"*"];
+            break;
+        case DIVIDE:
+            [[self enzan]setText:@"/"];
+            break;
+        case ROOT:
+            [[self enzan]setText:@"√"];
+            break;
+    }
     [self operating2];
     NSString *ans = [NSString stringWithFormat:@"%d",answer];
     self.gamen.text = ans;
@@ -102,23 +136,8 @@
 }
 
 - (int)operating2{
-    switch (opnum) {
-        case PLUS:
-            [[self enzan] setText:@"+"];
-            break;
-        case MINUS:
-            [[self enzan]setText:@"-"];
-            break;
-        case MULTI:
-            [[self enzan]setText:@"*"];
-            break;
-        case DIVIDE:
-            [[self enzan]setText:@"/"];
-            break;
-        case ROOT:
-            [[self enzan]setText:@"√"];
+    if (opnum==ROOT) {
             answer=sqrt(answer);
-            break;
     }
     return answer;
 }
