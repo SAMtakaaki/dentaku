@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB5F50F51847005000B29B0D /* OperateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5F50F41847005000B29B0D /* OperateMachine.m */; };
 		EBABF76B180FBF7300923B72 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBABF76A180FBF7300923B72 /* UIKit.framework */; };
 		EBABF76D180FBF7300923B72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBABF76C180FBF7300923B72 /* Foundation.framework */; };
 		EBABF76F180FBF7300923B72 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBABF76E180FBF7300923B72 /* CoreGraphics.framework */; };
@@ -37,8 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB5F50F31847003200B29B0D /* OperateMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperateMachine.h; sourceTree = "<group>"; };
-		EB5F50F41847005000B29B0D /* OperateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperateMachine.m; sourceTree = "<group>"; };
 		EBABF767180FBF7300923B72 /* dentaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dentaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBABF76A180FBF7300923B72 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EBABF76C180FBF7300923B72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,8 +122,6 @@
 				EBABF782180FBF7300923B72 /* MainStoryboard.storyboard */,
 				EBABF785180FBF7300923B72 /* ViewController.h */,
 				EBABF786180FBF7400923B72 /* ViewController.m */,
-				EB5F50F31847003200B29B0D /* OperateMachine.h */,
-				EB5F50F41847005000B29B0D /* OperateMachine.m */,
 				EBABF771180FBF7300923B72 /* Supporting Files */,
 			);
 			path = dentaku;
@@ -278,7 +273,6 @@
 				EBABF777180FBF7300923B72 /* main.m in Sources */,
 				EBABF77B180FBF7300923B72 /* AppDelegate.m in Sources */,
 				EBABF787180FBF7400923B72 /* ViewController.m in Sources */,
-				EB5F50F51847005000B29B0D /* OperateMachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
